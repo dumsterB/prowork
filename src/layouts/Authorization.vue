@@ -1,11 +1,15 @@
 <template>
-$END$
+  <div>
+    <h2>auth</h2>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-export default {
-name: "Authorization"
-}
+import {defineComponent} from 'vue';
+export default defineComponent({
+  name: "Authorization"
+})
 </script>
 
 <style scoped>
