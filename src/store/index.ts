@@ -1,15 +1,10 @@
-import { createApp } from 'vue'
 import { createStore } from 'vuex'
-
+import Documents from './modules/documents/index'
 export default createStore({
-  state: {
+  modules:{
+    Documents
   },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
+  state:{
+    test:'hello'
   }
 })

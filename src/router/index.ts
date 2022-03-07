@@ -1,10 +1,10 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
-import TheHome from '../pages/index/Home.vue'
+import TheHome from '../pages/Index/Home.vue'
 import TheRegions from '../pages/Locations/Regions.vue'
 import TheCountries from '../pages/Locations/Regions.vue'
 import TheBlogs from '../pages/Resources/Blog.vue'
 import TheFaq from '../pages/Resources/FAQ.vue'
-import TheCalendarEvents from '../pages/Resources/СalendarEvents.vue'
+import TheEvents from '../pages/Resources/СalendarEvents.vue'
 import TheAdvertising from '../pages/Advertising/Advertising.vue'
 import TheCatalogCompany from '../pages/Catalog/CatalogCompany.vue'
 import TheOccupations from '../pages/Occupations/Occupations.vue'
@@ -13,7 +13,11 @@ import TheServices from '../pages/Documents/Services.vue'
 import TheHelp from '../pages/Documents/Help.vue'
 import TheAgreement from '../pages/Documents/Agreement.vue'
 import TheData from '../pages/Documents/Data.vue'
-import  TheAbout from '../pages/Company/About.vue'
+import TheAbout from '../pages/Company/About.vue'
+import TheInvestors from '../pages/Company/Investors.vue'
+import TheVacancies from '../pages/Company/Vacancies.vue'
+import TheSignUp from  '../pages/Auth/SignUp.vue'
+
 const routes: Array<RouteRecordRaw> = [
     {
         path: '/',
@@ -41,9 +45,9 @@ const routes: Array<RouteRecordRaw> = [
         component:TheFaq,
     },
     {
-        path: '/calendarEvents',
-        name: 'CalendarEvents',
-        component: TheCalendarEvents,
+        path: '/events',
+        name: 'Events',
+        component: TheEvents,
     },
     {
         path:'/advertising',
@@ -93,26 +97,28 @@ const routes: Array<RouteRecordRaw> = [
     {
         path:'/investors',
         name:"Investors",
-        component:()=> import('../pages/Company/Investors.vue'),
+        component:TheInvestors,
     },
     {
         path:'/vacancies',
         name:"Vacancies",
-        component:()=> import('../pages/Company/Vacancies.vue'),
+        component:TheVacancies,
     },
     {
         path:'/login',
         name:"SignIn",
-        component:()=> import('../pages/Auth/SignUp.vue'),
+        component:TheSignUp,
         meta:{
             layout:'AuthLayout'
         }
     },
-    /* Edit */
     {
         path: '/:catchAll(.*)*',
         component:Error,
         name:"Error",
+        meta:{
+            layout:'ErrorLayout'
+        }
     }
 ]
 

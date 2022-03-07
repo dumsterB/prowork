@@ -6,7 +6,7 @@
       </div>
       <a-menu theme="dark" mode="inline">
         <div v-for="(item,i) of nav_links" :key="i">
-          <a-menu-item  :key="i" v-if="!item.children" >
+          <a-menu-item :key="i" v-if="!item.children" >
             <component :is="item.icon"></component>
             <span>{{item.name}}</span>
           </a-menu-item>
@@ -24,12 +24,12 @@
     </a-layout-sider>
     <a-layout>
       <a-layout-content style="margin: 0 16px">
-        <a-breadcrumb style="margin: 16px 0">
-          <a-breadcrumb-item>User</a-breadcrumb-item>
-          <a-breadcrumb-item>Bill</a-breadcrumb-item>
-        </a-breadcrumb>
+      <a-breadcrumb style="margin: 16px 0">
+        <a-breadcrumb-item>User</a-breadcrumb-item>
+        <a-breadcrumb-item>Bill</a-breadcrumb-item>
+      </a-breadcrumb>
         <div :style="{ padding: '24px', background: '#fff', minHeight: '100%' }">
-          Bill is a cat.
+          <router-view></router-view>
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
@@ -115,18 +115,18 @@ export default defineComponent({
         children: [
           {
             name: 'Блог / Статьи',
-            file: 'png',
-            link: 'Blog'
+            url:'/blog',
+            icon: 'Blog'
           },
           {
             name: 'FAQ',
-            file: 'html',
-            link: 'FAQ'
+            url:'/faq',
+            icon: 'Blog'
           },
           {
             name: 'Календарь мероприятий',
-            file: 'html',
-            link: 'CalendarEvents'
+            url:'/events',
+            icon: 'Blog'
           },
         ],
       },

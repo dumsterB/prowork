@@ -1,22 +1,31 @@
 <template>
   <div>
     <component :is="layout">
-      <router-view />
+      <router-view/>
     </component>
   </div>
 </template>
 <script>
-import {defineComponent,computed,} from "vue";
+import {defineComponent, computed,ref} from "vue";
 import {useRouter} from 'vue-router';
-import Default from './layouts/Default'
+import DefaultLayout from './layouts/DefaultLayout'
+import AuthLayout from "@/layouts/AuthLayout";
+import ErrorLayout from "@/layouts/ErrorLayout";
 export default defineComponent({
-  setup(){
+  components:{
+    DefaultLayout,AuthLayout,ErrorLayout
+  },
+  setup() {
     const router = useRouter()
     const layout = computed(() => {
-      return (router.currentRoute.value.meta.layout || Default)
+      if(!router.currentRoute.value.meta.layout){
+        return DefaultLayout
+      }else{
+        return router.currentRoute.value.meta.layout
+      }
     })
     return {
-      layout
+      layout,
     }
   }
 
