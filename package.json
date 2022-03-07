@@ -9,11 +9,13 @@
   },
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
+    "@tabler/icons": "^1.54.0",
     "ant-design-vue": "^2.2.8",
     "axios": "^0.26.0",
     "register-service-worker": "^1.7.2",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
+    "vue-tabler-icons": "^2.3.0",
     "vuex": "^4.0.0"
   },
   "devDependencies": {

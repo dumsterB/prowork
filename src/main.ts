@@ -1,7 +1,10 @@
 import {createApp} from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import store from './store/index'
 import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
-createApp(App).use(Antd).use(store).use(router).mount('#app')
+import 'ant-design-vue/dist/antd.css';
+import VueTablerIcons from "vue-tabler-icons";
+const app =createApp(App)
+
+app.use(Antd).use(VueTablerIcons).use(store).use(router).mount('#app')
