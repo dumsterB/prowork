@@ -1,6 +1,7 @@
 export default {
-    SET_TEST() {
-        console.log('set_test mutaation u know')
+    SET_TEST(state:any,payload:any) {
+       state.posts=payload
+        console.log(payload,'mutationsssss',state.posts)
     },
 /*    SET_DRAWER(state, payload) {
         state.drawer = payload

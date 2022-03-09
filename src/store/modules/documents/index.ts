@@ -1,8 +1,9 @@
-import { createStore } from 'vuex'
 import actions from "./actions";
-export default createStore({
-    state:{
-        modulesTest:'test successs',
-    },
-})
-export {actions}
+import mutations from "./mutations";
+const namespaced = true;
+const state={
+    testData:'hello',
+    posts:[]
+}
+
+export default {actions,mutations,state,namespaced}

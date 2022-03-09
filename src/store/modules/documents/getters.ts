@@ -1,9 +1,5 @@
-/*
-const getters = {
-    test(state) {
+export default  {
+    test(state:any) {
         return state.modulesTest
     }
 }
-export default {
-    getters
-}*/
