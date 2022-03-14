@@ -1,8 +1,9 @@
-import axios from "axios";
+import axios,{AxiosResponse} from "axios";
+import {Posts} from '../types/documents'
 
-async function loadPosts({commit}: any) {
-    await axios.get('https://jsonplaceholder.typicode.com/posts')
-        .then((res) => {
+ function loadPosts({commit}: any) {
+     axios.get('https://jsonplaceholder.typicode.com/posts')
+        .then((res:AxiosResponse<Posts[]>) => {
             if (res && res.data) {
                 commit('SET_TEST', res.data)
                 console.log(res.data,'successs')

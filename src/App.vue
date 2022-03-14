@@ -6,7 +6,7 @@
   </div>
 </template>
 <script>
-import {defineComponent, computed,ref} from "vue";
+import {defineComponent, computed} from "vue";
 import {useRouter} from 'vue-router';
 import DefaultLayout from './layouts/DefaultLayout'
 import AuthLayout from "@/layouts/AuthLayout";

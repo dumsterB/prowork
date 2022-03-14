@@ -10,10 +10,10 @@ import {defineComponent, ref, computed, onMounted} from "vue";
 export default defineComponent({
    setup() {
     const store = useStore()
-    const posts = store.state.Documents.posts
+    const posts = computed(()=>store.state.Documents.posts)
     const getPosts = ()=> store.dispatch('Documents/loadPosts')
-     onMounted(()=>{
-        getPosts()
+     onMounted( async()=>{
+      await  getPosts()
      })
     return {
       posts,

@@ -1,33 +1,36 @@
 <template>
   <a-layout style="min-height: 100vh">
-    <a-layout-sider  >
+    <a-layout-sider>
       <div class="logo_img">
-        <img height="50" src="../assets/logo.png" alt="">
+        <h1 style="color: white">PROWORK</h1>
       </div>
       <a-menu theme="dark" mode="inline">
         <div v-for="(item,i) of nav_links" :key="i">
-          <a-menu-item :key="i" v-if="!item.children" >
+          <a-menu-item @click="HandlerRoute(item)" :key="i" v-if="!item.children">
             <component :is="item.icon"></component>
-            <span>{{item.name}}</span>
+            <span>{{ item.name }}</span>
           </a-menu-item>
           <a-sub-menu :key="i" v-if="item.children">
             <template #title>
             <span>
              <component :is="item.icon"></component>
-            <span>{{item.name}}</span>
+            <span>{{ item.name }}</span>
             </span>
             </template>
-            <a-menu-item v-for="child of item.children" :key="child.name">{{child.name}}</a-menu-item>
+            <a-menu-item v-for="child of item.children" @click="HandlerRoute(child)" :key="child.name">
+              <component :is="item.icon"></component>
+              <span> {{ child.name }}</span>
+            </a-menu-item>
           </a-sub-menu>
         </div>
       </a-menu>
     </a-layout-sider>
     <a-layout>
       <a-layout-content style="margin: 0 16px">
-      <a-breadcrumb style="margin: 16px 0">
-        <a-breadcrumb-item>User</a-breadcrumb-item>
-        <a-breadcrumb-item>Bill</a-breadcrumb-item>
-      </a-breadcrumb>
+        <a-breadcrumb style="margin: 16px 0">
+          <a-breadcrumb-item>User</a-breadcrumb-item>
+          <a-breadcrumb-item>Bill</a-breadcrumb-item>
+        </a-breadcrumb>
         <div :style="{ padding: '24px', background: '#fff', minHeight: '100%' }">
           <router-view></router-view>
         </div>
@@ -55,6 +58,7 @@ import {
   FileTextOutlined
 } from '@ant-design/icons-vue';
 import {defineComponent, ref} from 'vue';
+import {useRouter} from "vue-router";
 
 export default defineComponent({
   components: {
@@ -73,144 +77,147 @@ export default defineComponent({
     FileOutlined,
   },
   setup() {
+    const router = useRouter()
     const collapsed = ref(false)
     const selectedKeys = ref(['1'])
     const nav_links = ref(
-       [
-      {
-        name: 'Главная',
-        icon: HomeOutlined,
-        url:'/'
-      },
-      {
-        name: "Локация",
-        icon:CompassOutlined,
-        children: [
+        [
           {
-            name: 'Регионы',
-            url: '/regions',
-            icon:'country'
+            name: 'Главная',
+            icon: HomeOutlined,
+            url: '/'
           },
           {
-            name: 'Города',
-            url: '/countries',
-            icon:'region'
-          }
-        ]
-      },
-      {
-        name: 'Професии и специализации',
-        icon: 'UserOutlined',
-        url: '/occupations'
-      },
-      {
-        name: 'Каталог компаний',
-        icon: FileTextOutlined,
-        url:'/catalog'
-      },
-      {
-        name: 'Полезные материалы',
-        icon:ProfileOutlined,
-        url:'/materials',
-        children: [
-          {
-            name: 'Блог / Статьи',
-            url:'/blog',
-            icon: 'Blog'
+            name: "Локация",
+            icon: CompassOutlined,
+            children: [
+              {
+                name: 'Регионы',
+                url: '/regions',
+                icon: 'country'
+              },
+              {
+                name: 'Города',
+                url: '/countries',
+                icon: 'region'
+              }
+            ]
           },
           {
-            name: 'FAQ',
-            url:'/faq',
-            icon: 'Blog'
+            name: 'Професии и специализации',
+            icon: 'UserOutlined',
+            url: '/occupations'
           },
           {
-            name: 'Календарь мероприятий',
-            url:'/events',
-            icon: 'Blog'
+            name: 'Каталог компаний',
+            icon: FileTextOutlined,
+            url: '/catalog'
+          },
+          {
+            name: 'Полезные материалы',
+            icon: ProfileOutlined,
+            url: '/materials',
+            children: [
+              {
+                name: 'Блог / Статьи',
+                url: '/blog',
+                icon: 'Blog'
+              },
+              {
+                name: 'FAQ',
+                url: '/faq',
+                icon: 'Blog'
+              },
+              {
+                name: 'Календарь мероприятий',
+                url: '/events',
+                icon: 'Blog'
+              },
+            ],
+          },
+          {
+            name: 'Компания PROWORK',
+            icon: NumberOutlined,
+            url: '/company',
+            children: [
+              {
+                name: 'О компании',
+                icon: NumberOutlined,
+                url: '/company',
+              },
+              {
+                name: 'Наши вакансии',
+                icon: NumberOutlined,
+                url: '/vacancies',
+              },
+              {
+                name: 'Инвесторам',
+                icon: NumberOutlined,
+                url: '/investors',
+              },
+            ],
+          },
+          {
+            name: 'Документы',
+            url: '/documents',
+            icon: FolderOutlined,
+            children: [
+              {
+                name: 'Условия оказания услуг',
+                url: '/services',
+                icon: FolderOutlined,
+              },
+              {
+                name: 'Условия использования сайтов',
+                url: '/utilization',
+                icon: FolderOutlined,
+              },
+              {
+                name: 'Защита персональных данных',
+                url: '/data',
+                icon: FolderOutlined,
+              },
+              {
+                name: 'Помощь',
+                url: '/help',
+                icon: FolderOutlined,
+              },
+              {
+                name: 'Пользовательское соглашение',
+                url: '/agreement',
+                icon: FolderOutlined,
+              },
+            ],
+          },
+          {
+            name: 'Реклама на сайте',
+            url: '/advertising',
+            icon: FontColorsOutlined,
+          },
+          {
+            name: 'Статистика',
+            url: '/statistics',
+            icon: BarChartOutlined,
+            children: [
+              {
+                name: 'Статистика соискателей',
+                url: '/applicants',
+                icon: BarChartOutlined,
+              },
+              {
+                name: 'Статистика компаний',
+                url: '/company',
+                icon: BarChartOutlined,
+              },
+            ],
           },
         ],
-      },
-      {
-        name: 'Компания PROWORK',
-        icon:NumberOutlined,
-        url:'/company',
-        children: [
-          {
-            name: 'О компании',
-            file: 'png',
-            link: 'About'
-          },
-          {
-            name: 'Наши вакансии',
-            file: 'html',
-            link: 'Vacancies'
-          },
-          {
-            name: 'Инвесторам',
-            file: 'html',
-            link: 'Investors'
-          },
-        ],
-      },
-      {
-        name: 'Документы',
-        url:'/documents',
-        icon:FolderOutlined,
-        children: [
-          {
-            name: 'Условия оказания услуг',
-            file: 'png',
-            link: 'Services'
-          },
-          {
-            name: 'Условия использования сайтов',
-            file: 'html',
-            link: 'Utilization'
-          },
-          {
-            name: 'Защита персональных данных',
-            file: 'html',
-            link: 'Data'
-          },
-          {
-            name: 'Помощь',
-            file: 'html',
-            link: 'Help'
-          },
-          {
-            name: 'Пользовательское соглашение',
-            file: 'html',
-            link: 'Agreement'
-          },
-        ],
-      },
-      {
-        name: 'Реклама на сайте',
-        url: '/advertising',
-        icon:FontColorsOutlined ,
-      },
-      {
-        name: 'Статистика',
-        url:'/statistics',
-        icon:BarChartOutlined,
-        children: [
-          {
-            name: 'Статистика соискателей',
-            file: 'png',
-            link: 'Applicants'
-          },
-          {
-            name: 'Статистика компаний',
-            file: 'html',
-            link: 'Company'
-          },
-        ],
-      },
-    ],
     )
-
+    const HandlerRoute = (value: any) => {
+      router.push(value.url)
+    }
     return {
-      selectedKeys, collapsed,nav_links
+      selectedKeys, collapsed, nav_links, HandlerRoute
     }
   }
 });
@@ -235,9 +242,10 @@ export default defineComponent({
   justify-content: center;
   padding: 5px;
 }
-.ant-layout-sider{
-  max-width: 270px!important;
-  min-width: 270px!important;
-  width: 270px!important;
+
+.ant-layout-sider {
+  max-width: 270px !important;
+  min-width: 270px !important;
+  width: 270px !important;
 }
 </style>

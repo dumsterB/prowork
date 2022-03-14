@@ -1,7 +1,7 @@
 import {createRouter, createWebHistory, RouteRecordRaw} from 'vue-router'
 import TheHome from '../pages/Index/Home.vue'
 import TheRegions from '../pages/Locations/Regions.vue'
-import TheCountries from '../pages/Locations/Regions.vue'
+import TheCountries from '../pages/Locations/TheCountries.vue'
 import TheBlogs from '../pages/Resources/Blog.vue'
 import TheFaq from '../pages/Resources/FAQ.vue'
 import TheEvents from '../pages/Resources/СalendarEvents.vue'
@@ -17,6 +17,8 @@ import TheAbout from '../pages/Company/About.vue'
 import TheInvestors from '../pages/Company/Investors.vue'
 import TheVacancies from '../pages/Company/Vacancies.vue'
 import TheSignUp from  '../pages/Auth/SignUp.vue'
+import TheApplicants from '../pages/Statistics/ApplicantsStatistic.vue'
+import TheCompany from '../pages/Statistics/CompanyStatistic.vue'
 
 const routes: Array<RouteRecordRaw> = [
     {
@@ -31,11 +33,11 @@ const routes: Array<RouteRecordRaw> = [
     },
     {
         path: '/countries',
-        name: 'Countries',
+        name: 'TheCountries',
         component: TheCountries,
     },
     {
-        path: '/blogs',
+        path: '/blog',
         name: 'Blog',
         component:TheBlogs
     },
@@ -55,7 +57,7 @@ const routes: Array<RouteRecordRaw> = [
         component:TheAdvertising,
     },
     {
-        path:'/CatalogCompany',
+        path:'/catalog',
         name:"CatalogCompany",
         component:TheCatalogCompany,
     },
@@ -98,6 +100,16 @@ const routes: Array<RouteRecordRaw> = [
         path:'/investors',
         name:"Investors",
         component:TheInvestors,
+    },
+    {
+        path:'/applicants',
+        name:"Applicants",
+        component:TheApplicants,
+    },
+    {
+        path:'/company',
+        name:"Company",
+        component:TheCompany,
     },
     {
         path:'/vacancies',
