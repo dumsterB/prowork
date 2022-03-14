@@ -1,0 +1,20 @@
+/* Base */
+.text-gray{
+    color: #6b7280;
+    font-size: 15px;
+}
+.text-success{
+    color: #059669;
+}
+.ml-normal{
+    margin-left: 15px;
+}
+.mt-normal{
+    margin-top: 15px;
+}
+.d-flex{
+    display: flex;
+}
+.d-block{
+    display: block;
+}
