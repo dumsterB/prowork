@@ -26,11 +26,25 @@
       </a-menu>
     </a-layout-sider>
     <a-layout>
-      <a-layout-content style="margin: 0 16px">
-        <a-breadcrumb style="margin: 16px 0">
-          <a-breadcrumb-item>User</a-breadcrumb-item>
-          <a-breadcrumb-item>Bill</a-breadcrumb-item>
-        </a-breadcrumb>
+      <a-layout-content style="margin: 0 16px" >
+        <div >
+        <div v-for="(item,i) of nav_links" :key="i">
+        <a-breadcrumb style="margin: 16px 0" v-if="!item.children && $route.fullPath===item.url">
+          <a-breadcrumb-item>{{item.name}} </a-breadcrumb-item>        </a-breadcrumb>
+        </div>
+          <div v-for="(item,i) of nav_links" :key="i">
+            <div v-if="item.children">
+              <div v-for="child of item.children" :key="child.url">
+                <a-breadcrumb style="margin: 16px 0" v-if="$route.fullPath===child.url">
+                  <a-breadcrumb-item>{{item.name}} </a-breadcrumb-item>
+                  <a-breadcrumb-item>{{child.name}} </a-breadcrumb-item>
+                </a-breadcrumb>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <div :style="{ padding: '24px', background: '#fff', minHeight: '100%' }">
           <router-view></router-view>
         </div>
@@ -79,7 +93,6 @@ export default defineComponent({
   setup() {
     const router = useRouter()
     const collapsed = ref(false)
-    const selectedKeys = ref(['1'])
     const nav_links = ref(
         [
           {
@@ -217,7 +230,7 @@ export default defineComponent({
       router.push(value.url)
     }
     return {
-      selectedKeys, collapsed, nav_links, HandlerRoute
+       collapsed, nav_links, HandlerRoute
     }
   }
 });

@@ -10,11 +10,14 @@
     margin-left: 15px;
 }
 .mt-normal{
-    margin-top: 15px;
+    margin-top: 12px;
 }
 .d-flex{
     display: flex;
 }
 .d-block{
     display: block;
+}
+.p-normal{
+    padding: 10px;
 }
