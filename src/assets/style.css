@@ -6,6 +6,9 @@
 .text-success{
     color: #059669;
 }
+.text-center{
+    text-align: center;
+}
 .ml-normal{
     margin-left: 15px;
 }
