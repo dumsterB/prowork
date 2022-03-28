@@ -1,14 +1,19 @@
 <template>
   <div>
-    <a-skeleton :active="true" :paragraph="{ rows: 20 }" :loading="loading">
-      <a-table :columns="columns" :data-source="data" :scroll="{ x: 1300, y: 1000 }">
-        <template #bodyCell="{ column }">
-          <template v-if="column.key === 'operation'">
-            <a>action</a>
-          </template>
-        </template>
-      </a-table>
-    </a-skeleton>
+    <div class="blog">
+      <div class="content">
+        <h2>Блог и статьи</h2>
+        <a-skeleton :active="true" :paragraph="{ rows: 20 }" :loading="loading">
+          <a-table :columns="columns" :data-source="data" :scroll="{ x: 1300, y: 1000 }">
+            <template #bodyCell="{ column }">
+              <template v-if="column.key === 'operation'">
+                <a>action</a>
+              </template>
+            </template>
+          </a-table>
+        </a-skeleton>
+      </div>
+    </div>
   </div>
 
 </template>

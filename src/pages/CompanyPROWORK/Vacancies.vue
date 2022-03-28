@@ -1,96 +1,102 @@
 <template>
   <div>
-    <a-tabs v-model:activeKey="activeKey" type="card">
-      <a-tab-pane key="1" tab="Индустрия">
-        <a-row>
-          <a-col v-for="job of jobs" :key="job.text">
-            <div class="jobs" @click="activeHandler(job)" :class="job.active ? 'active_job': ''">
-              {{ job.text }}
-            </div>
-          </a-col>
-        </a-row>
-      </a-tab-pane>
-      <a-tab-pane key="2" tab="Професии">
-        <a-row>
-          <a-col v-for="job of jobs" :key="job.text">
-            <div class="professions">
-              <a-checkbox v-model:checked="job.active"><span style="font-size: 16px">{{ job.text }}</span></a-checkbox>
-            </div>
-          </a-col>
-        </a-row>
-      </a-tab-pane>
-    </a-tabs>
-    <a-divider/>
-    <div>
-      <h2 class="text-center">Данные о вакансии</h2>
-      <div>
-        <a-form
-            :model="formState"
-            name="basic"
-            :label-col="{ span: 8 }"
-            :wrapper-col="{ span: 16 }"
-            autocomplete="off"
-        >
-          <a-row>
-            <a-col :span="8">
-              <a-form-item
-                  label="Зарплата"
-                  name="salary"
-                  :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
-              >
-                <a-input v-model:value="formState.salary"/>
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item
-                  label="Субтитр"
-                  name="username"
-                  :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
-              >
-                <a-input v-model:value="formState.subtitle"/>
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item
-                  label="Страна"
-                  name="country"
-                  :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
-              >
-                <a-input v-model:value="formState.country"/>
-              </a-form-item>
-            </a-col>
-          </a-row>
-          <br>
-          <a-row>
-            <a-col :span="8">
-              <a-form-item
-                  label="Город"
-                  name="city"
-                  :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
-              >
-                <a-input v-model:value="formState.city"/>
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item
-                  label="Город"
-                  name="city"
-                  :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
-              >
-                <a-input v-model:value="formState.city"/>
-              </a-form-item>
-            </a-col>
-            <a-col :span="8">
-              <a-form-item
-                  label="Город"
-                  name="city"
-                  :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
-              >
-                <a-input v-model:value="formState.city"/>
-              </a-form-item>
-            </a-col>
-          </a-row>
-        </a-form>
+    <div class="investors">
+      <div class="content">
+        <h2>Вакансии</h2>
+        <a-tabs v-model:activeKey="activeKey" type="card">
+          <a-tab-pane key="1" tab="Индустрия">
+            <a-row>
+              <a-col v-for="job of jobs" :key="job.text">
+                <div class="jobs" @click="activeHandler(job)" :class="job.active ? 'active_job': ''">
+                  {{ job.text }}
+                </div>
+              </a-col>
+            </a-row>
+          </a-tab-pane>
+          <a-tab-pane key="2" tab="Професии">
+            <a-row>
+              <a-col v-for="job of jobs" :key="job.text">
+                <div class="professions">
+                  <a-checkbox v-model:checked="job.active"><span style="font-size: 16px">{{ job.text }}</span>
+                  </a-checkbox>
+                </div>
+              </a-col>
+            </a-row>
+          </a-tab-pane>
+        </a-tabs>
+        <a-divider/>
+        <div>
+          <h2 class="text-center">Данные о вакансии</h2>
+          <div>
+            <a-form
+                :model="formState"
+                name="basic"
+                :label-col="{ span: 8 }"
+                :wrapper-col="{ span: 16 }"
+                autocomplete="off"
+            >
+              <a-row>
+                <a-col :span="8">
+                  <a-form-item
+                      label="Зарплата"
+                      name="salary"
+                      :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
+                  >
+                    <a-input v-model:value="formState.salary"/>
+                  </a-form-item>
+                </a-col>
+                <a-col :span="8">
+                  <a-form-item
+                      label="Субтитр"
+                      name="username"
+                      :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
+                  >
+                    <a-input v-model:value="formState.subtitle"/>
+                  </a-form-item>
+                </a-col>
+                <a-col :span="8">
+                  <a-form-item
+                      label="Страна"
+                      name="country"
+                      :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
+                  >
+                    <a-input v-model:value="formState.country"/>
+                  </a-form-item>
+                </a-col>
+              </a-row>
+              <br>
+              <a-row>
+                <a-col :span="8">
+                  <a-form-item
+                      label="Город"
+                      name="city"
+                      :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
+                  >
+                    <a-input v-model:value="formState.city"/>
+                  </a-form-item>
+                </a-col>
+                <a-col :span="8">
+                  <a-form-item
+                      label="Город"
+                      name="city"
+                      :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
+                  >
+                    <a-input v-model:value="formState.city"/>
+                  </a-form-item>
+                </a-col>
+                <a-col :span="8">
+                  <a-form-item
+                      label="Город"
+                      name="city"
+                      :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
+                  >
+                    <a-input v-model:value="formState.city"/>
+                  </a-form-item>
+                </a-col>
+              </a-row>
+            </a-form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -102,8 +108,8 @@ import {useStore} from "vuex";
 interface FormState {
   salary: string;
   subtitle: string;
-  country:string;
-  city:string
+  country: string;
+  city: string
 }
 
 export default defineComponent({
@@ -116,7 +122,7 @@ export default defineComponent({
       salary: '',
       subtitle: '',
       country: '',
-      city:''
+      city: ''
     });
     const jobs = ref([
       {text: 'Финансовый департамент', active: false},

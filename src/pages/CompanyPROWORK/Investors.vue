@@ -1,5 +1,8 @@
 <template>
   <div>
+    <div class="investors">
+    <div class="content">
+      <h2>Инвесторам</h2>
     <a-skeleton :active="true" :paragraph="{ rows: 20 }" :loading="loading">
       <a-table :columns="columns" :data-source="data" :scroll="{ x: 1300, y: 1000 }">
         <template #bodyCell="{ column }">
@@ -9,6 +12,8 @@
         </template>
       </a-table>
     </a-skeleton>
+  </div>
+    </div>
   </div>
 
 </template>
