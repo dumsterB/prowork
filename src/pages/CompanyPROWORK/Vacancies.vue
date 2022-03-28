@@ -32,40 +32,61 @@
             autocomplete="off"
         >
           <a-row>
-            <a-col>
+            <a-col :span="8">
               <a-form-item
                   label="Зарплата"
-                  name="username"
+                  name="salary"
                   :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
               >
-                <a-input v-model:value="formState.username"/>
+                <a-input v-model:value="formState.salary"/>
               </a-form-item>
             </a-col>
-            <a-col>
+            <a-col :span="8">
               <a-form-item
                   label="Субтитр"
                   name="username"
                   :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
               >
-                <a-input v-model:value="formState.username"/>
+                <a-input v-model:value="formState.subtitle"/>
               </a-form-item>
             </a-col>
-            <a-col>
+            <a-col :span="8">
               <a-form-item
                   label="Страна"
-                  name="username"
+                  name="country"
                   :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
               >
-                <a-input v-model:value="formState.username"/>
+                <a-input v-model:value="formState.country"/>
               </a-form-item>
             </a-col>
-            <a-col>
+          </a-row>
+          <br>
+          <a-row>
+            <a-col :span="8">
               <a-form-item
                   label="Город"
-                  name="username"
+                  name="city"
                   :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
               >
-                <a-input v-model:value="formState.username"/>
+                <a-input v-model:value="formState.city"/>
+              </a-form-item>
+            </a-col>
+            <a-col :span="8">
+              <a-form-item
+                  label="Город"
+                  name="city"
+                  :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
+              >
+                <a-input v-model:value="formState.city"/>
+              </a-form-item>
+            </a-col>
+            <a-col :span="8">
+              <a-form-item
+                  label="Город"
+                  name="city"
+                  :rules="[{ required: true, message: 'Поля обязательно для заполнению' }]"
+              >
+                <a-input v-model:value="formState.city"/>
               </a-form-item>
             </a-col>
           </a-row>
@@ -79,9 +100,10 @@ import {defineComponent, ref, reactive} from "vue";
 import {useStore} from "vuex";
 
 interface FormState {
-  username: string;
-  password: string;
-  remember: boolean;
+  salary: string;
+  subtitle: string;
+  country:string;
+  city:string
 }
 
 export default defineComponent({
@@ -91,9 +113,10 @@ export default defineComponent({
     const checked = ref(false)
     const activeKey = ref('1')
     const formState = ref<FormState>({
-      username: '',
-      password: '',
-      remember: true,
+      salary: '',
+      subtitle: '',
+      country: '',
+      city:''
     });
     const jobs = ref([
       {text: 'Финансовый департамент', active: false},

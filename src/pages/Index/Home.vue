@@ -18,32 +18,34 @@
       </a-col>
     </a-row>
     <a-typography-title class="mt-normal" :level="3">Последние 30 дней</a-typography-title>
-    <a-row>
-      <a-col v-for="i of 3" :key="i" :span="8">
-        <a-card title="ПОЛЬЗОВАТЕЛИ"  style="width: 320px; height: 180px">
-          <a-row>
-            <a-col :span="12">
+    <a-skeleton active :loading="loading">
+      <a-row>
+        <a-col v-for="i of 3" :key="i" :span="8">
+          <a-card title="ПОЛЬЗОВАТЕЛИ" style="width: 320px; height: 180px">
+            <a-row>
+              <a-col :span="12">
               <span class="d-flex">
                <p class="quantity">71,897</p>
               <span class="text-success mt-normal"><CaretUpOutlined/> by122</span>
               </span>
-            </a-col>
-            <a-col :span="12">
-              <div class="userIcon">
-                <UsersIcon color="white"></UsersIcon>
-              </div>
-            </a-col>
-          </a-row>
-          <a-row>
-            <a-col :span="12">
-              <div class="more">
-              <a-button type="link">Посмотреть все</a-button>
-              </div>
-            </a-col>
-          </a-row>
-        </a-card>
-      </a-col>
-    </a-row>
+              </a-col>
+              <a-col :span="12">
+                <div class="userIcon">
+                  <UsersIcon color="white"></UsersIcon>
+                </div>
+              </a-col>
+            </a-row>
+            <a-row>
+              <a-col :span="12">
+                <div class="more">
+                  <a-button type="link">Посмотреть все</a-button>
+                </div>
+              </a-col>
+            </a-row>
+          </a-card>
+        </a-col>
+      </a-row>
+    </a-skeleton>
   </div>
 </template>
 <script>
@@ -57,10 +59,16 @@ export default defineComponent({
     CaretUpOutlined, UsersIcon
   },
   setup() {
-
+    const loading = ref(true);
     const store = useStore()
-
-    return {}
+    onMounted(() => {
+      setTimeout(() => {
+        loading.value = false
+      }, 1000)
+    })
+    return {
+      loading
+    }
   }
 
 })
@@ -85,7 +93,8 @@ export default defineComponent({
   position: absolute;
   height: 50px;
 }
-.more{
+
+.more {
   margin-left: -15px;
 }
 </style>

@@ -107,7 +107,7 @@ const routes: Array<RouteRecordRaw> = [
         component:TheApplicants,
     },
     {
-        path:'/company',
+        path:'/company_statistic',
         name:"Company",
         component:TheCompany,
     },

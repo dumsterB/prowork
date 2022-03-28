@@ -18,11 +18,7 @@ export default defineComponent({
   setup() {
     const router = useRouter()
     const layout = computed(() => {
-      if(!router.currentRoute.value.meta.layout){
-        return DefaultLayout
-      }else{
-        return router.currentRoute.value.meta.layout
-      }
+      return (router.currentRoute.value.meta.layout || DefaultLayout)
     })
     return {
       layout,

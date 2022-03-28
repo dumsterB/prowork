@@ -43,8 +43,6 @@
             </div>
           </div>
         </div>
-
-
         <div :style="{ padding: '24px', background: '#fff', minHeight: '100%' }">
           <router-view></router-view>
         </div>
@@ -151,12 +149,11 @@ export default defineComponent({
           {
             name: 'Компания PROWORK',
             icon: NumberOutlined,
-            url: '/company',
             children: [
               {
                 name: 'О компании',
                 icon: NumberOutlined,
-                url: '/company',
+                url: '/about',
               },
               {
                 name: 'Наши вакансии',
@@ -172,7 +169,6 @@ export default defineComponent({
           },
           {
             name: 'Документы',
-            url: '/documents',
             icon: FolderOutlined,
             children: [
               {
@@ -209,7 +205,6 @@ export default defineComponent({
           },
           {
             name: 'Статистика',
-            url: '/statistics',
             icon: BarChartOutlined,
             children: [
               {
@@ -219,7 +214,7 @@ export default defineComponent({
               },
               {
                 name: 'Статистика компаний',
-                url: '/company',
+                url: '/company_statistic',
                 icon: BarChartOutlined,
               },
             ],
@@ -257,8 +252,8 @@ export default defineComponent({
 }
 
 .ant-layout-sider {
-  max-width: 270px !important;
-  min-width: 270px !important;
+  max-width: 300px !important;
+  min-width: 300px !important;
   width: 270px !important;
 }
 </style>
