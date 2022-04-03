@@ -1,6 +1,6 @@
 <template>
   <a-layout style="min-height: 100vh">
-    <a-layout-sider>
+    <a-layout-sider v-model:collapsed="collapsed" :class="[collapsed ? 'ant-layout-sider-desktop' : 'ant-layout-sider-mobile']" :trigger="null" collapsible>
       <div class="logo_img">
         <h1 style="color: white">PROWORK</h1>
       </div>
@@ -10,11 +10,11 @@
             <component :is="item.icon"></component>
             <span>{{ item.name }}</span>
           </a-menu-item>
-          <a-sub-menu :key="i" v-if="item.children">
+          <a-sub-menu  :key="i" v-if="item.children">
             <template #title>
             <span>
              <component :is="item.icon"></component>
-            <span>{{ item.name }}</span>
+            <span> {{ item.name }}</span>
             </span>
             </template>
             <a-menu-item v-for="child of item.children" @click="HandlerRoute(child)" :key="child.name">
@@ -26,11 +26,14 @@
       </a-menu>
     </a-layout-sider>
     <a-layout>
+
       <a-layout-content style="margin: 0 16px" >
-        <div >
-        <div v-for="(item,i) of nav_links" :key="i">
-        <a-breadcrumb style="margin: 16px 0" v-if="!item.children && $route.fullPath===item.url">
-          <a-breadcrumb-item>{{item.name}} </a-breadcrumb-item>        </a-breadcrumb>
+        <div class="d-flex" >
+          <menu-outlined  @click="() => (collapsed = !collapsed)"  class="ml-normal drawer" />
+          <div class="ml-normal" v-for="(item,i) of nav_links" :key="i" style="display: flex">
+            <a-breadcrumb style="margin: 16px 0" v-if="!item.children && $route.fullPath===item.url">
+          <a-breadcrumb-item>{{item.name}} </a-breadcrumb-item>
+        </a-breadcrumb>
         </div>
           <div v-for="(item,i) of nav_links" :key="i">
             <div v-if="item.children">
@@ -67,7 +70,8 @@ import {
   TeamOutlined,
   ProfileOutlined,
   FileOutlined,
-  FileTextOutlined
+  FileTextOutlined,
+  MenuOutlined
 } from '@ant-design/icons-vue';
 import {defineComponent, ref} from 'vue';
 import {useRouter} from "vue-router";
@@ -87,10 +91,11 @@ export default defineComponent({
     HomeOutlined,
     TeamOutlined,
     FileOutlined,
+    MenuOutlined
   },
   setup() {
     const router = useRouter()
-    const collapsed = ref(false)
+    const collapsed = ref<boolean>(false)
     const nav_links = ref(
         [
           {
@@ -250,10 +255,17 @@ export default defineComponent({
   justify-content: center;
   padding: 5px;
 }
-
-.ant-layout-sider {
-  max-width: 300px !important;
-  min-width: 300px !important;
-  width: 270px !important;
+.ant-layout-sider-mobile{
+  max-width: 100px !important;
+  min-width: 100px !important;
+  width: 100px !important;
+}
+.ant-layout-sider-desktop {
+  max-width: 300px!important;
+  min-width: 300px!important;
+  width: 270px!important;
+}
+.drawer{
+  margin-top: 16px;
 }
 </style>
